@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const slotSchema = new mongoose.Schema({
   date: { type: Date, required: true, min: Date.now },
+  time: { type: String, required: true },
   availableSeats: { type: Number, required: true, default: 10, min: 0 },
   total_seats: { type: Number, required: true, min: 0 },
 
