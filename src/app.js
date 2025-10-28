@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
+const experienceRouter = require("./Experience/experienceRoute");
 
 app.use(express.json());
+
+// Routes
+app.use("/api/experience", experienceRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World from bookit");
