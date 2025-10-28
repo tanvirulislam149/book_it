@@ -1,3 +1,4 @@
+const Slots = require("../Slots/slotsModel");
 const Experience = require("./experienceModel");
 
 const getAllExperience = async (req, res, next) => {
@@ -12,8 +13,11 @@ const getAllExperience = async (req, res, next) => {
 
 const getExperienceById = async (req, res, next) => {
   try {
-    const experiences = await Experience.findById(req.params.id);
-    res.status(200).json(experiences);
+    const experience = await Experience.findById(req.params.id);
+    const slots = await Slots.find({ experience: experience._id }).populate(
+      "experience"
+    );
+    res.status(200).json(slots);
   } catch (error) {
     res.status(500).json(error.message);
   }
