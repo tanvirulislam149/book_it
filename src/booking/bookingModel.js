@@ -13,6 +13,13 @@ const bookingSchema = new mongoose.Schema({
     required: [true, "Email is required"],
   },
   promo: { type: String },
+  price: { type: Number, required: [true, "Price is required"] },
+  person: {
+    type: Number,
+    required: [true, "Person is required"],
+    default: 1,
+    min: 1,
+  },
 
   slot: {
     type: mongoose.Schema.Types.ObjectId,
