@@ -7,7 +7,10 @@ const getAllExperience = async (req, res, next) => {
     const experiences = await Experience.find();
     res.status(200).json(experiences);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
@@ -19,7 +22,10 @@ const getExperienceById = async (req, res, next) => {
     );
     res.status(200).json(slots);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
