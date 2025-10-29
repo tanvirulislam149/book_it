@@ -14,13 +14,13 @@ const bookingSchema = new mongoose.Schema({
   },
   promo: { type: String },
 
-  experience: {
+  slot: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Slot",
     required: true,
   },
 });
 
-const Slots = mongoose.model("Slot", slotSchema);
+const Booking = mongoose.model("booking", bookingSchema);
 
-module.exports = Slots;
+module.exports = Booking;
