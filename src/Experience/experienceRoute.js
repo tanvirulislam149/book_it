@@ -6,8 +6,7 @@ const {
 
 const experienceRouter = express.Router();
 
-experienceRouter.get("/getAllExp", getAllExperience);
+experienceRouter.get("/", getAllExperience);
 experienceRouter.get("/:id", getExperienceById);
-// experienceRouter.post("/login", loginUser);
 
 module.exports = experienceRouter;
