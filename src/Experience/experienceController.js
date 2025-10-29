@@ -3,7 +3,6 @@ const Experience = require("./experienceModel");
 
 const getAllExperience = async (req, res, next) => {
   try {
-    console.log("object");
     const experiences = await Experience.find();
     res.status(200).json(experiences);
   } catch (error) {

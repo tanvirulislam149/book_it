@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const experienceRouter = require("./Experience/experienceRoute");
 const promoRouter = require("./Promo/promoRoute");
 const bookingRouter = require("./booking/bookingRoute");
 
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.use("/api/experience", experienceRouter);
