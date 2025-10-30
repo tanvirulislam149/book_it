@@ -12,9 +12,18 @@ const postBooking = async (req, res, next) => {
     }
     res.status(201).json(result);
   } catch (error) {
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors).map((err) => err.message);
+      return res.status(400).json({
+        success: false,
+        message: messages.join(", "),
+      });
+    }
+
+    // 🟡 Default fallback
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: "Something went wrong while creating the booking.",
     });
   }
 };
