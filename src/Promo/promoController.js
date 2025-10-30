@@ -3,13 +3,10 @@ const Promo = require("./promoModel");
 const postPromoValidate = async (req, res, next) => {
   try {
     const { code, price } = req.body;
-    console.log("code", code, price);
     const promo = await Promo.findOne({ code: code });
-    console.log("promo", promo);
     if (promo && promo.isActive) {
       if (promo.discountType === "percentage") {
         const discountPrice = price * (promo.discountValue / 100);
-        console.log("discountPrice", discountPrice);
         res.json({
           success: true,
           discount: discountPrice,

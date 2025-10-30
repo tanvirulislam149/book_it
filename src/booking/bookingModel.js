@@ -17,7 +17,6 @@ const bookingSchema = new mongoose.Schema({
   person: {
     type: Number,
     required: [true, "Person is required"],
-    default: 1,
     min: 1,
   },
 
