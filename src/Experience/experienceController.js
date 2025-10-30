@@ -3,7 +3,10 @@ const Experience = require("./experienceModel");
 
 const getAllExperience = async (req, res, next) => {
   try {
-    const experiences = await Experience.find();
+    const { title } = req.query;
+    const experiences = await Experience.find({
+      title: { $regex: title, $options: "i" },
+    });
     res.status(200).json(experiences);
   } catch (error) {
     res.status(500).json({

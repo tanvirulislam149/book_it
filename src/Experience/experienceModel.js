@@ -6,7 +6,7 @@ const experienceSchema = new mongoose.Schema(
     location: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    image: { type: String, required: true },
+    image_url: { type: String, required: true },
   },
   { timestamps: true }
 );
