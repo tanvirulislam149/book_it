@@ -22,7 +22,7 @@ const getExperienceById = async (req, res, next) => {
     const slots = await Slots.find({ experience: experience._id }).populate(
       "experience"
     );
-    res.status(200).json(slots);
+    res.status(200).json({ experience, slots });
   } catch (error) {
     res.status(500).json({
       success: false,
