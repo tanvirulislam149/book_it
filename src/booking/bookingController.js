@@ -4,9 +4,15 @@ const Slot = require("../Slots/slotsModel");
 const postBooking = async (req, res, next) => {
   try {
     const { person, slot } = req.body;
+    const bookedSlot = await Slot.findById(slot);
+    if (person > bookedSlot.availableSeats) {
+      return res.status(400).json({
+        success: false,
+        message: `Booking failed. Only ${bookedSlot.availableSeats} seats available.`,
+      });
+    }
     const result = await Booking.create(req.body);
     if (result._id) {
-      const bookedSlot = await Slot.findById(slot);
       bookedSlot.availableSeats -= person;
       await bookedSlot.save();
     }
